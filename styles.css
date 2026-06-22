@@ -1,0 +1,588 @@
+/* ============================================================
+   Rajo Mental Health Education and Support — Donation Page
+   ============================================================ */
+
+/* === Custom Properties === */
+:root {
+    --green-950: #0f2d1e;
+    --green-900: #1b4332;
+    --green-800: #2d6a4f;
+    --green-700: #40916c;
+    --green-600: #52b788;
+    --green-400: #74c69d;
+    --green-200: #b7e4c7;
+    --green-100: #d8f3dc;
+    --green-50:  #f0faf0;
+
+    --gray-900: #111827;
+    --gray-700: #374151;
+    --gray-500: #6b7280;
+    --gray-300: #d1d5db;
+    --gray-100: #f3f4f6;
+
+    --white: #ffffff;
+    --bg:    #f5f9f5;
+
+    --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.07);
+    --shadow:    0 4px 20px rgba(27, 67, 50, 0.12);
+    --shadow-lg: 0 10px 40px rgba(27, 67, 50, 0.18);
+
+    --radius:    20px;
+    --radius-sm: 12px;
+    --radius-xs:  8px;
+
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-head: 'Playfair Display', Georgia, 'Times New Roman', serif;
+
+    --transition: 0.22s ease;
+}
+
+/* === Reset & Base === */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg);
+    color: var(--gray-700);
+    line-height: 1.65;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* === Container === */
+.container {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.site-header {
+    background: linear-gradient(150deg, var(--green-950) 0%, var(--green-800) 60%, var(--green-700) 100%);
+    padding: 56px 20px 52px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle radial glow overlays */
+.site-header::before,
+.site-header::after {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+    border-radius: 50%;
+}
+.site-header::before {
+    width: 500px; height: 500px;
+    top: -200px; left: -100px;
+    background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+}
+.site-header::after {
+    width: 400px; height: 400px;
+    bottom: -150px; right: -80px;
+    background: radial-gradient(circle, rgba(116, 198, 157, 0.12) 0%, transparent 70%);
+}
+
+.header-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+}
+
+.header-emblem svg {
+    width: 80px;
+    height: 80px;
+    filter: drop-shadow(0 4px 16px rgba(0,0,0,0.25));
+}
+
+.charity-name {
+    font-family: var(--font-head);
+    font-size: clamp(1.9rem, 5.5vw, 3rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.2);
+}
+
+.charity-tagline {
+    font-size: 0.88rem;
+    color: var(--green-200);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+/* ============================================================
+   SHARED SECTION STYLES
+   ============================================================ */
+section {
+    padding: 60px 0;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-header h2 {
+    font-family: var(--font-head);
+    font-size: clamp(1.5rem, 4vw, 2.1rem);
+    color: var(--green-900);
+    margin-bottom: 12px;
+    line-height: 1.25;
+}
+
+.section-header p {
+    color: var(--gray-500);
+    font-size: 1.05rem;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+/* ============================================================
+   THANK YOU SECTION
+   ============================================================ */
+.thank-you-section {
+    background: var(--green-50);
+    border-bottom: 1px solid var(--green-100);
+    padding: 52px 0;
+}
+
+.thank-you-card {
+    text-align: center;
+    max-width: 620px;
+    margin: 0 auto;
+}
+
+.heart-pulse {
+    display: block;
+    font-size: 3.2rem;
+    margin-bottom: 18px;
+    animation: heartbeat 2.4s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    14%       { transform: scale(1.14); }
+    28%       { transform: scale(1); }
+    42%       { transform: scale(1.08); }
+    56%       { transform: scale(1); }
+}
+
+.thank-you-card h2 {
+    font-family: var(--font-head);
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    color: var(--green-900);
+    margin-bottom: 16px;
+}
+
+.thank-you-card p {
+    color: var(--gray-700);
+    font-size: 1.05rem;
+    line-height: 1.75;
+}
+
+/* ============================================================
+   BANK SECTION
+   ============================================================ */
+.bank-section {
+    background: var(--white);
+}
+
+/* Card shell */
+.bank-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--green-100);
+    overflow: hidden;
+}
+
+/* Coloured card header strip */
+.bank-card-header {
+    background: linear-gradient(135deg, var(--green-900), var(--green-700));
+    padding: 18px 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--white);
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.03em;
+}
+
+.bank-card-header span:first-child {
+    font-size: 1.3rem;
+}
+
+/* Individual detail rows */
+.bank-details {
+    padding: 4px 0;
+}
+
+.detail-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 20px 28px;
+    border-bottom: 1px solid var(--gray-100);
+    flex-wrap: wrap;
+}
+
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+.detail-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+    min-width: 0;
+}
+
+.detail-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--green-700);
+}
+
+.detail-value {
+    font-size: 1.12rem;
+    font-weight: 600;
+    color: var(--gray-900);
+    word-break: break-word;
+    line-height: 1.4;
+}
+
+/* ============================================================
+   COPY BUTTONS — individual
+   ============================================================ */
+.copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--green-50);
+    color: var(--green-800);
+    border: 1.5px solid var(--green-200);
+    border-radius: var(--radius-sm);
+    padding: 10px 16px;
+    font-family: var(--font-body);
+    font-size: 0.83rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        background var(--transition),
+        color var(--transition),
+        border-color var(--transition),
+        transform var(--transition),
+        box-shadow var(--transition);
+    white-space: nowrap;
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.copy-btn:hover {
+    background: var(--green-800);
+    color: var(--white);
+    border-color: var(--green-800);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(45, 106, 79, 0.28);
+}
+
+.copy-btn:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+.copy-btn.copied {
+    background: var(--green-700);
+    color: var(--white);
+    border-color: var(--green-700);
+}
+
+.btn-icon {
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+}
+
+/* ============================================================
+   COPY ALL BUTTON
+   ============================================================ */
+.copy-all-wrapper {
+    padding: 4px 28px 28px;
+}
+
+.copy-all-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    background: linear-gradient(135deg, var(--green-800), var(--green-700));
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 16px 24px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+    transition:
+        background var(--transition),
+        transform var(--transition),
+        box-shadow var(--transition);
+}
+
+.copy-all-btn svg {
+    width: 19px;
+    height: 19px;
+    flex-shrink: 0;
+}
+
+.copy-all-btn:hover {
+    background: linear-gradient(135deg, var(--green-950), var(--green-800));
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(27, 67, 50, 0.32);
+}
+
+.copy-all-btn:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+.copy-all-btn.copied {
+    background: linear-gradient(135deg, var(--green-700), var(--green-600));
+}
+
+/* ============================================================
+   QR CODE SECTION
+   ============================================================ */
+.qr-section {
+    background: var(--green-50);
+    border-top: 1px solid var(--green-100);
+    border-bottom: 1px solid var(--green-100);
+}
+
+.qr-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+.qr-frame {
+    background: var(--white);
+    padding: 20px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--green-100);
+    display: inline-block;
+    line-height: 0; /* remove gap under inline-block canvas */
+}
+
+#qr-code canvas,
+#qr-code img {
+    display: block;
+    border-radius: var(--radius-xs);
+}
+
+.qr-caption {
+    text-align: center;
+    color: var(--gray-500);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* ============================================================
+   IMPACT SECTION
+   ============================================================ */
+.impact-section {
+    background: var(--white);
+}
+
+.impact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.impact-card {
+    background: var(--green-50);
+    border-radius: var(--radius-sm);
+    padding: 32px 24px;
+    text-align: center;
+    border: 1px solid var(--green-100);
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.impact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+}
+
+.impact-icon {
+    font-size: 2.4rem;
+    display: block;
+    margin-bottom: 16px;
+}
+
+.impact-card h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--green-900);
+    margin-bottom: 10px;
+    letter-spacing: 0.01em;
+}
+
+.impact-card p {
+    font-size: 0.88rem;
+    color: var(--gray-500);
+    line-height: 1.65;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer {
+    background: var(--green-900);
+    color: var(--green-200);
+    padding: 44px 20px;
+    text-align: center;
+}
+
+.footer-name {
+    font-family: var(--font-head);
+    font-size: 1.2rem;
+    color: var(--white);
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.footer-sub {
+    font-size: 0.82rem;
+    margin-bottom: 18px;
+    opacity: 0.65;
+}
+
+.footer-note {
+    font-size: 0.78rem;
+    opacity: 0.55;
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.65;
+}
+
+/* ============================================================
+   TOAST NOTIFICATION
+   ============================================================ */
+.toast {
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%) translateY(120px);
+    background: var(--green-900);
+    color: var(--white);
+    padding: 13px 26px;
+    border-radius: 40px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.22);
+    z-index: 9999;
+    pointer-events: none;
+    white-space: nowrap;
+    opacity: 0;
+    transition:
+        transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+        opacity 0.3s ease;
+}
+
+.toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+/* ============================================================
+   RESPONSIVE — TABLET
+   ============================================================ */
+@media (max-width: 680px) {
+    .impact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================================
+   RESPONSIVE — MOBILE
+   ============================================================ */
+@media (max-width: 520px) {
+    section {
+        padding: 44px 0;
+    }
+
+    .site-header {
+        padding: 44px 20px 40px;
+    }
+
+    .header-emblem svg {
+        width: 64px;
+        height: 64px;
+    }
+
+    .detail-row {
+        padding: 16px 20px;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .copy-btn {
+        justify-content: center;
+        padding: 13px 16px;
+        font-size: 0.88rem;
+    }
+
+    .bank-card-header {
+        padding: 16px 20px;
+    }
+
+    .copy-all-wrapper {
+        padding: 4px 20px 22px;
+    }
+
+    .impact-grid {
+        gap: 16px;
+    }
+
+    .impact-card {
+        padding: 26px 20px;
+    }
+}
+
+@media (max-width: 360px) {
+    .charity-name {
+        font-size: 1.65rem;
+    }
+    .charity-tagline {
+        font-size: 0.78rem;
+    }
+}
